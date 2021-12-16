@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     rollbar.info('html file serverd successfully')
 })
 
-app.post('/api/students', (req, res) => {
+app.post('/api/student', (req, res) => {
     let {name} = req.body
     name = name.trim()
 
