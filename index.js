@@ -1,10 +1,19 @@
 const express = require('express')
 const path = require('path')
 
+// include and initialize the rollbar library with your access token
+const Rollbar = require('rollbar')
+const rollbar = new Rollbar({
+  accessToken: '56d4b471086f4f46962ef71679a582f6',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
 const app = express()
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
+    rollbar.info('html file serverd successfully')
 })
 
 const port = process.env.PORT || 4545
